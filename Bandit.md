@@ -57,10 +57,52 @@ Not familiar with regular expressions (regex) and have no clue how escape charac
 > inhere\
 > bandit3@bandit:\~$ __cd inhere/__\
 > bandit3@bandit:\~/inhere$ __ls__\
-> bandit3@bandit:\~/inhere$ __ls -alh__\
+> bandit3@bandit:\~/inhere$ __ls \-alh__\
 > total 12K\
 > drwxr\-xr\-x 2 root    root    4\.0K May  7  2020 \.\
 > drwxr\-xr\-x 3 root    root    4\.0K May  7  2020 \.\.\
 > \-rw\-r\-\-\-\-\- 1 bandit4 bandit3   33 May  7  2020 \.hidden\
 > bandit3@bandit:\~/inhere$ __cat \.hidden__\
 > pIwrPrtPN36QITSp3EQaw936yaFoFgAB
+
+## Bandit3 \-\- Bandit4
+
+> bandit4@bandit:\~$ __ls__\bandit4@bandit:~$ ls
+inhere
+bandit4@bandit:~$ cd inhere; ls
+-file00  -file02  -file04  -file06  -file08
+-file01  -file03  -file05  -file07  -file09
+bandit4@bandit:~/inhere$ file ./-*
+./-file00: data
+./-file01: data
+./-file02: data
+./-file03: data
+./-file04: data
+./-file05: data
+./-file06: data
+./-file07: ASCII text
+./-file08: data
+./-file09: data
+bandit4@bandit:~/inhere$ cat ./-file07 
+koReBOKuIDDepwhWk7jZC0RTdopnAYKh
+
+> inhere\
+> bandit4@bandit:\~$ __cd inhere; ls__\
+> \-file00  \-file02  \-file04  \-file06  \-file08\
+> \-file01  \-file03  \-file05  \-file07  \-file09\
+> bandit4@bandit:\~/inhere$ __file \./\-\*__\
+> ./-file00: data\
+> ./-file01: data\
+> ./-file02: data\
+> ./-file03: data\
+> ./-file04: data\
+> ./-file05: data\
+> ./-file06: data\
+> ./-file07: ASCII text\
+> ./-file08: data\
+> ./-file09: data\
+> bandit4@bandit:\~/inhere$ __cat \./\-file07__\
+> koReBOKuIDDepwhWk7jZC0RTdopnAYKh
+
+## Bandit4 \-\- Bandit5
+
