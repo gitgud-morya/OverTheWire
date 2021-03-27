@@ -1,4 +1,4 @@
-## Preset
+## Prerequisites
 Things that might ease your future experience:
 - a screen multiplexer like [_tmux_](https://github.com/tmux/tmux/wiki);
 - a note taking application like [_cherrytree_](https://github.com/giuspen/cherrytree);
@@ -106,3 +106,32 @@ koReBOKuIDDepwhWk7jZC0RTdopnAYKh
 
 ## Bandit4 \-\- Bandit5
 
+> bandit5@bandit:\~$ __ls__\
+> inhere\
+> bandit5@bandit:\~$ __cd inhere/; ls__\
+> maybehere00  maybehere04  maybehere08  maybehere12  maybehere16\
+> maybehere01  maybehere05  maybehere09  maybehere13  maybehere17\
+> maybehere02  maybehere06  maybehere10  maybehere14  maybehere18\
+> maybehere03  maybehere07  maybehere11  maybehere15  maybehere19\
+> bandit5@bandit:\~/inhere$ __find \. \! \-executable \-size 1033c__\
+> \./maybehere07/\.file2\
+> bandit5@bandit:\~/inhere$ __cat \./maybehere07/\.file2__\
+> DXjZPULLxYr17uwoI01bNLQbtFemEgo7\
+
+A good aftermath practice is to try to get a flag with a single command:
+> bandit5@bandit:\~$ __cat $(find \./inhere \-size 1033c \! \-executable)__\
+> DXjZPULLxYr17uwoI01bNLQbtFemEgo7
+
+## Bandit5 \-\- Bandit6
+
+> bandit6@bandit:\~$ __find / \-size 33c \-user bandit7 \-group bandit6 2>/dev/null__\
+> /var/lib/dpkg/info/bandit7\.password\
+> bandit6@bandit:\~$ __cat /var/lib/dpkg/info/bandit7\.password__\
+> HKBPTKQnIay4Fw76bEy8PVxKEDQRKTzs
+
+_2>/dev/null_ redirects errors to make life easier
+
+> bandit6@bandit:\~$ __cat $(find / \-size 33c \-user bandit7 \-group bandit6 2>/dev/null)__\
+> HKBPTKQnIay4Fw76bEy8PVxKEDQRKTzs
+
+## Bandit6 \-\- Bandit7
