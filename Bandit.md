@@ -51,7 +51,7 @@ There are several ways to display the content of the file:
 
 Not familiar with regular expressions (regex) and have no clue how escape characters in the above example work? [gitgud](https://regexone.com/) 
 
-## Bandit2 \-\- Bandit3
+## Bandit3 \-\- Bandit4
 
 > bandit3@bandit:\~$ __ls__\
 > inhere\
@@ -65,7 +65,7 @@ Not familiar with regular expressions (regex) and have no clue how escape charac
 > bandit3@bandit:\~/inhere$ __cat \.hidden__\
 > pIwrPrtPN36QITSp3EQaw936yaFoFgAB
 
-## Bandit3 \-\- Bandit4
+## Bandit4 \-\- Bandit5
 
 > bandit4@bandit:\~$ __ls__\bandit4@bandit:~$ ls
 inhere
@@ -104,7 +104,7 @@ koReBOKuIDDepwhWk7jZC0RTdopnAYKh
 > bandit4@bandit:\~/inhere$ __cat \./\-file07__\
 > koReBOKuIDDepwhWk7jZC0RTdopnAYKh
 
-## Bandit4 \-\- Bandit5
+## Bandit5 \-\- Bandit6
 
 > bandit5@bandit:\~$ __ls__\
 > inhere\
@@ -122,7 +122,7 @@ A good aftermath practice is to try to get a flag with a single command:
 > bandit5@bandit:\~$ __cat $(find \./inhere \-size 1033c \! \-executable)__\
 > DXjZPULLxYr17uwoI01bNLQbtFemEgo7
 
-## Bandit5 \-\- Bandit6
+## Bandit6 \-\- Bandit7
 
 > bandit6@bandit:\~$ __find / \-size 33c \-user bandit7 \-group bandit6 2>/dev/null__\
 > /var/lib/dpkg/info/bandit7\.password\
@@ -134,4 +134,21 @@ _2>/dev/null_ redirects errors to make life easier
 > bandit6@bandit:\~$ __cat $(find / \-size 33c \-user bandit7 \-group bandit6 2>/dev/null)__\
 > HKBPTKQnIay4Fw76bEy8PVxKEDQRKTzs
 
-## Bandit6 \-\- Bandit7
+## Bandit7 \-\- Bandit8
+
+> bandit7@bandit:\~$ __ls__\
+> data.txt\
+> bandit7@bandit:\~$ __grep millionth data\.txt__\
+> millionth	cvX2JJa4CFALtqS87jk27qwqGhBM9plV
+
+## Bandit8 \-\- Bandit9
+
+The man page for the command _uniq_ states:
+> Note:  \'uniq\'  does not detect repeated lines unless they are adjacent\.\
+> You may want to sort the input first, or use \'sort \-u\' without \'uniq\'\.
+
+So let\'s do this\!
+> bandit8@bandit:\~$ __ls__\
+> data.txt\
+> bandit8@bandit:\~$ __sort data\.txt | uniq \-u__\
+> UsvVyFSfZZWbi6wgC7dAFyFuR6jQQUhR
