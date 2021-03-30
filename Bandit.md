@@ -152,3 +152,25 @@ So let\'s do this\!
 > data.txt\
 > bandit8@bandit:\~$ __sort data\.txt | uniq \-u__\
 > UsvVyFSfZZWbi6wgC7dAFyFuR6jQQUhR
+
+## Bandit9 \-\- Bandit10
+
+> bandit9@bandit:\~$ __strings data\.txt | grep \=\=__\
+> ========== the\*2i\"4\
+> ========== password\
+> Z)========== is\
+> &========== truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk
+
+## Bandit10 \-\- Bandit11
+
+> bandit10@bandit:~$ __base64 -d data.txt__\
+> The password is IFukwKGsFW8MOq3IRFqrxE1hxTNEbUPR
+
+## Bandit11 \-\- Bandit12
+
+The command _tr_ is required for this level, feel free to _man_ it!
+
+> bandit11@bandit:\~$ __alias rot13\=\"tr \'a\-zA-Z\' \'n\-za\-mN\-ZA\-M\'\"__\
+> bandit11@bandit:\~$ __cat data\.txt | rot13__\
+> The password is 5Te8Y4drgCRfCx8ugdwuEX8KFC6k2EUu
+
