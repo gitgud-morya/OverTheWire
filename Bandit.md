@@ -174,3 +174,76 @@ The command _tr_ is required for this level, feel free to _man_ it!
 > bandit11@bandit:\~$ __cat data\.txt | rot13__\
 > The password is 5Te8Y4drgCRfCx8ugdwuEX8KFC6k2EUu
 
+## Bandit12 \-\- Bandit13
+
+> bandit12@bandit:\~$ __mkdir /tmp/XcQ\-bandit__\
+> bandit12@bandit:\~$ __cd /tmp/XcQ\-bandit \&\& cp \~/data\.txt \.__\
+> bandit12@bandit:/tmp/XcQ\-bandit$ __xxd \-r data\.txt data1__\
+> bandit12@bandit:/tmp/XcQ\-bandit$ __file data1__\
+> data1: gzip compressed data, was "data2\.bin", last modified: Thu May  7 18:14:30 2020$ max compression, from Unix  
+
+- A raw and tedious walkthrough implies iterations of extracting different-extension archives:
+
+gzip
+> __mv filename filename\.gz \&\& gzip \-d filename\.gz__
+
+bzip
+> __bzip2 \-d filename__
+
+tar
+> __tar \-x \-f filename__
+
+Finally,
+> bandit12@bandit:/tmp/XcQ\-bandit$ __file data1__\
+> data9: ASCII text\
+> bandit12@bandit:/tmp/XcQ\-bandit$ __cat data9__\
+> The password is 8ZjyCRiBWFYkneahHwxCv3wb2a1ORpYL
+
+- Another way around is scripting:
+
+> bandit12@bandit:/tmp/XcQ\-bandit$ __vim bndt\.sh__\
+> (if you're unfamiliar with vim but would like to be, use _vimtutor_ command in your terminal)
+
+```bash
+#!/bin/bash 
+
+R=$(cat /dev/urandom | tr -cd [:alnum:] | head -c 10)
+
+if [ -f $1 ]
+then
+    case $(file $1) in
+        *gzip*) 
+            gzip -d $1 -c > $R
+            ./$0 $R
+            ;;  
+        *bzip2*)
+            bzip2 -d $1 -c > $R
+            ./$0 $R
+            ;;  
+        *POSIX\ tar*)
+            tar xOf $1 > $R
+            ./$0 $R
+            ;;
+        *ASCII*)
+            cat $1
+            ;;                                                                    
+    esac
+fi
+```
+
+The line
+> R=$(cat /dev/urandom | tr -cd [:alnum:] | head -c 20)
+
+assignes a randomly generated alphanumeric string of 20 bytes to the variable R used for naming newly extracted files every now and then.\
+$0 and $1 are Bash characters for input arguments, here's a list of some:
+
+- $0 \- The name of the Bash script\.
+- $1\-$9 \- The first 9 arguments to the Bash script\.
+- $\# \- How many arguments were passed to the Bash script\.
+- (Use _env_ command to explore other variables available\.
+
+Save the script (_ESC :wq_), change its execute permissions and run it with our hexdump-reverted file _data1_ as an argument:
+
+> bandit12@bandit:/tmp/XcQ\-bandit$ __chmod \+x bndt\.sh && ./bndt\.sh data1__\
+> The password is 8ZjyCRiBWFYkneahHwxCv3wb2a1ORpYL
+
