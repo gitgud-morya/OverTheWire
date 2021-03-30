@@ -21,8 +21,7 @@ Assuming you\'re familiar with __ssh__, ikimashou\!
 Using __Tab__ for autocompletion is a good practice:
 > bandit0@bandit:\~$ __cat r__\
 > (_Tab_)\
-> bandit0@bandit:\~$ __cat readme__\
-> bandit3@bandit:\~$ ls
+> bandit0@bandit:\~$ __cat readme__
 
 ## Bandit1 \-\- Bandit2
 
@@ -67,25 +66,7 @@ Not familiar with regular expressions (regex) and have no clue how escape charac
 
 ## Bandit4 \-\- Bandit5
 
-> bandit4@bandit:\~$ __ls__\bandit4@bandit:~$ ls
-inhere
-bandit4@bandit:~$ cd inhere; ls
--file00  -file02  -file04  -file06  -file08
--file01  -file03  -file05  -file07  -file09
-bandit4@bandit:~/inhere$ file ./-*
-./-file00: data
-./-file01: data
-./-file02: data
-./-file03: data
-./-file04: data
-./-file05: data
-./-file06: data
-./-file07: ASCII text
-./-file08: data
-./-file09: data
-bandit4@bandit:~/inhere$ cat ./-file07 
-koReBOKuIDDepwhWk7jZC0RTdopnAYKh
-
+> bandit4@bandit:\~$ __ls__\bandit4@bandit:~$ ls\
 > inhere\
 > bandit4@bandit:\~$ __cd inhere; ls__\
 > \-file00  \-file02  \-file04  \-file06  \-file08\
