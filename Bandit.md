@@ -228,3 +228,26 @@ Save the script (_ESC :wq_), change its execute permissions and run it with our 
 > bandit12@bandit:/tmp/XcQ\-bandit$ __chmod \+x bndt\.sh && ./bndt\.sh data1__\
 > The password is 8ZjyCRiBWFYkneahHwxCv3wb2a1ORpYL
 
+## Bandit13 \-\- Bandit14
+
+> bandit13@bandit:\~$ __ls__\
+> sshkey\.private\
+> bandit13@bandit:\~$ __ssh \-i sshkey\.private bandit14@localhost__
+
+## Bandit14 \-\- Bandit15
+
+> bandit14@bandit:\~$ __cat /etc/bandit\_pass/bandit14 | nc localhost 30000__\
+> Correct\!\
+> BfMYroe26WYalil77FoDi9qh59eK5xNr
+
+## Bandit15 \-\- Bandit16
+
+> bandit15@bandit:\~$ __openssl s\_client \-connect localhost:30001__\
+> <\.\.\.>\
+>     Extended master secret: yes\
+> \-\-\-\
+> BfMYroe26WYalil77FoDi9qh59eK5xNr\
+> Correct\!\
+> cluFn7wTiGryunymYOu4RcffSxQluehd\
+> \
+> closed
